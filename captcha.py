@@ -289,7 +289,7 @@ model.summary()
 # epochs = 150
 # early_stopping_patience = 10
 
-epochs = 30
+epochs = 50
 early_stopping_patience = 5
 
 # TESTING ONLY
@@ -414,9 +414,9 @@ for batch in validation_dataset:
     total_val_correct += correct
     print(f"Validation accuracy for this batch: {correct}/{len(orig_texts)}")
     
-print("***********************************") 
+print("*****************************************") 
 print(f"Total validation accuracy: {total_val_correct}/{total_val_set} ({(total_val_correct / total_val_set) * 100:.2f}%)")
-print("***********************************") 
+print("*****************************************") 
 # plt.show()
 
 # Function to predict images from a given path and match with labels
@@ -475,7 +475,7 @@ if __name__ == '__main__':
     print("Main function called.")
     parser = argparse.ArgumentParser(description="Predict captcha text from .jpg images and save results as .txt files.")
 
-    parser.add_argument('--im_path', type=str, default='./data/raw_images',
+    parser.add_argument('--im_path', type=str, default='./data/test_images',
                         help='Path to directory containing .jpg images')
     parser.add_argument('--save_path', type=str, default='./output',
                         help='Path to directory to save .txt files')
