@@ -258,7 +258,7 @@ def build_model():
     x = layers.Dense(64, activation="relu", name="dense1")(x)
     x = layers.Dropout(0.2)(x)
 
-    # RNNs (TODO: may not be needed since the characters do not overlap much
+    # RNNs
     x = layers.Bidirectional(layers.LSTM(128, return_sequences=True, dropout=0.25))(x)
     x = layers.Bidirectional(layers.LSTM(64, return_sequences=True, dropout=0.25))(x)
 
@@ -286,11 +286,11 @@ def build_model():
 model = build_model()
 model.summary()
 
-# epochs = 150
-# early_stopping_patience = 10
+epochs = 150
+early_stopping_patience = 10
 
-epochs = 50
-early_stopping_patience = 5
+# epochs = 50
+# early_stopping_patience = 5
 
 # TESTING ONLY
 # epochs = 1

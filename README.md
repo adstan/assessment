@@ -61,3 +61,11 @@ Alternatively, you can run the `captcha.py` script with named parameters:
 ```
 imda_assessment>python captcha.py --im_path input_dir --save_path output_dir
 ```
+
+## Troubleshooting
+In case of missing packages, the following were running using:
+* Anaconda Navigator 2.6.6
+* Python 3.12.9
+
+New conda environment was installed with the following packages:
+![alt text](res/conda_packages.jpg)
