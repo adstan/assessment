@@ -47,11 +47,11 @@ A few variation of generated count and training epochs were tested, with the fol
 Using initial FAIL-FAST approaches helps to identify usable reference codes and limitations (eg. lack of training data). Generating data from provided samples, given the CAPTCHA characteristics, is the most **practical and predictable** approach, leading to faster development time with less trial and error.
 
 # How to Run
-> Before running, ENSURE the working directory is correctly set to the `imda_assessment` folder
+> Before running, ENSURE the working directory is correctly set to the `assessment` folder
 
 Running the `captcha.py` script for the first time expands the `data.zip` to create a `data` folder:
 * `data/captcha_images_v5000` - training data (generated)
-* `data/test_images` - test data (provided by IMDA)
+* `data/test_images` - test data (provided)
 
 Running the `captcha.py` script with no parameters will:
 * use `data/unseen_images/input100.jpg` as the input image
