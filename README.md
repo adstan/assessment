@@ -59,7 +59,7 @@ Running the `captcha.py` script with no parameters will:
 
 Alternatively, you can run the `captcha.py` script with named parameters:
 ```
-imda_assessment>python captcha.py --im_path input.jpg --save_path output.txt
+assessment>python captcha.py --im_path input.jpg --save_path output.txt
 ```
 
 ## Troubleshooting
