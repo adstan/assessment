@@ -436,18 +436,18 @@ def predict_images_from_path(images_dir):
 
     return result_filenames, result_predictions
 
-def predict_and_output(im_path, save_path):
-    if not os.path.exists(im_path):
-        raise FileNotFoundError(f"The directory {im_path} does not exist.")
-    if not os.path.isdir(im_path):
-        raise NotADirectoryError(f"The path {im_path} is not a directory.")        
-    if not os.path.exists(save_path):
-        os.makedirs(save_path)
+def predict_and_output(im_dir, output_dir):
+    if not os.path.exists(im_dir):
+        raise FileNotFoundError(f"The directory {im_dir} does not exist.")
+    if not os.path.isdir(im_dir):
+        raise NotADirectoryError(f"The path {im_dir} is not a directory.")        
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
 
-    success_result_filenames, result_predictions = predict_images_from_path(im_path)
+    success_result_filenames, result_predictions = predict_images_from_path(im_dir)
     for filename, prediction in zip(success_result_filenames, result_predictions):
         txt_filename = filename + '.txt'
-        txt_filepath = os.path.join(save_path, txt_filename)
+        txt_filepath = os.path.join(output_dir, txt_filename)
         with open(txt_filepath, 'w') as f:
             f.write(prediction)
 
@@ -466,19 +466,25 @@ class Captcha(object):
         """
         Algo for inference
         args:
-            im_path: directory containing .jpg image files
-            save_path: output directory to save .txt files with filenames
+            im_path: .jpg image path to load and to infer
+            save_path: output file path to save the one-line outcome
         """
-        predict_and_output(im_path, save_path)
+        if not os.path.exists(im_path):
+            raise FileNotFoundError(f"The image path {im_path} does not exist.")
+
+        pred_text = predict_image_from_path(im_path)
+        print(f"Image: {im_path}, Predicted: {pred_text}")
+        with open(save_path, 'w') as f:
+            f.write(pred_text)
 
 if __name__ == '__main__':
     print("Main function called.")
-    parser = argparse.ArgumentParser(description="Predict captcha text from .jpg images and save results as .txt files.")
+    parser = argparse.ArgumentParser(description="Predict captcha text from .jpg image and save result.")
 
-    parser.add_argument('--im_path', type=str, default='./data/test_images',
-                        help='Path to directory containing .jpg images')
-    parser.add_argument('--save_path', type=str, default='./output',
-                        help='Path to directory to save .txt files')
+    parser.add_argument('--im_path', type=str, default='data/unseen_images/input100.jpg',
+                        help='Path to image')
+    parser.add_argument('--save_path', type=str, default='output100.txt',
+                        help='Path to output')
 
     args = parser.parse_args()
 

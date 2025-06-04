@@ -31,6 +31,7 @@ As seen in the sample images, here are the image generation considerations:
 - The individual character positions, 1-5, remain the same throughout. *Exact image values can be extracted from the provided samples, and be placed in any character position as desired.*
 - It is important that the provided 25 samples are EXCLUDED from the generated data as they will become useful test dataset.
 - Each character needs to appear with enough occurences in different positions. As seen below, this is the frequency for each characters when 3000 images are generated.
+
 ![alt text](res/freq_3000.png)
 
 ## Findings in Varying the the Generated Images and Epoch count
@@ -48,18 +49,17 @@ Using initial FAIL-FAST approaches helps to identify usable reference codes and 
 # How to Run
 > Before running, ENSURE the working directory is correctly set to the `imda_assessment` folder
 
-Running the `captcha.py` script:
-* Expand the `data.zip` to create a `data` folder
+Running the `captcha.py` script for the first time expands the `data.zip` to create a `data` folder:
 * `data/captcha_images_v5000` - training data (generated)
 * `data/test_images` - test data (provided by IMDA)
 
 Running the `captcha.py` script with no parameters will:
-* use `data/test_images` as the input data (.jpg files)
-* use `output` folder to store predicted output (.txt files)
+* use `data/unseen_images/input100.jpg` as the input image
+* use `output100.txt` to store predicted output
 
 Alternatively, you can run the `captcha.py` script with named parameters:
 ```
-imda_assessment>python captcha.py --im_path input_dir --save_path output_dir
+imda_assessment>python captcha.py --im_path input.jpg --save_path output.txt
 ```
 
 ## Troubleshooting
